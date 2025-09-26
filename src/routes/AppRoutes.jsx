@@ -139,6 +139,11 @@ export const AppRoutes = () => {
             <PacienteDetalhes/> 
           </ProtectedRoute>
         } />
+        <Route path="/sessao/:sessionId" element={
+          <ProtectedRoute>
+            <SessaoDetalhes/> 
+          </ProtectedRoute>
+        } />
       </Routes>
     </Router>
   );
