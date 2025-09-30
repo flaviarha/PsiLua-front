@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { mockApi } from "../services/mockApi";
 import { Calendar, Users, CheckCheck, Bell } from "lucide-react";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import { StatsCard } from "../components/StatsCard";
 
 export const DashboardPsicologo = () => {
   const { user } = useAuth();
@@ -40,6 +41,7 @@ export const DashboardPsicologo = () => {
     );
   }
 
+  
   // KPIs
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -102,7 +104,7 @@ export const DashboardPsicologo = () => {
 
       {/* Próximos agendamentos */}
       <div className="bg-white rounded-2xl p-6 shadow-sm">
-        <h2 className="text-lg font-medium text-gray-60 mb-5">
+        <h2 className="text-lg font-medium text-gray-600 mb-5">
           Próximos agendamentos
         </h2>
         {upcomingAppointments.length === 0 ? (

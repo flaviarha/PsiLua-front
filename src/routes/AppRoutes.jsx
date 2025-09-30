@@ -22,6 +22,7 @@ import { Relatorios } from '../pages/Relatórios';
 import { Solicitacoes } from '../pages/Solicitacoes';
 import { Pacientes } from '../pages/Pacientes';
 import { PacienteDetalhes } from '../pages/PacienteDetalhes';
+import { SessaoDetalhes } from '../pages/SessaoDetalhes';
  
  
 /* ==============================
