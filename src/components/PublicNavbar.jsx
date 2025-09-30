@@ -17,16 +17,16 @@ export const PublicNavbar = () => {
   return (
     <nav
       style={{ backgroundColor: "#9d7cc1" }}
-      className="bg-lilac-40 to-lilac-400 px-6 py-3 shadow-sm"
+      className="bg-lilac-400  px-6 py-5 shadow-sm"
     >
       <div className="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4">
         <div className="flex items-center justify-between">
           {/* logotipo */}
-          <div className="flex items-center space-x-88 md:space-x-8">
+          <div className="flex items-center space-x-88 md:space-x-9">
             <div className="relative">
               <img
                 src="/logo.png"
-                alt="logotipo site lunysse"
+                alt="logotipo site PsiLua"
                 className="w-60 h-5 md:w-12 md:h-12 shadow-lg"
               />
               <div className="absolute inset-1 bg-gradient-to-r from-light to-accent rounded-xl blur opacity-30 md:rounded-b-xl"></div>

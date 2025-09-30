@@ -154,6 +154,8 @@ src/
 ├── components/          # Componentes reutilizáveis
 │   ├── Button.jsx      # Botão customizado com variantes
 │   ├── Card.jsx        # Container com glassmorphism
+|   ├──DashboardCard.jsx  #card informativo
+|   ├──Infoballon.jsx  #Balão informativo
 |   ├── Footer.jsx        # Container footer
 │   ├── Input.jsx       # Input com validação e show/hide password
 │   ├── LoadingSpinner.jsx # Spinner de carregamento
@@ -222,9 +224,9 @@ A API mockada simula um backend real com as seguintes funcionalidades:
  
 Os dados são armazenados no `localStorage` do navegador:
  
-- `lunysse_users` - Usuários do sistema
-- `lunysse_patients` - Pacientes cadastrados
-- `lunysse_appointments` - Agendamentos e sessões
+- `psilua_users` - Usuários do sistema
+- `psilua_patients` - Pacientes cadastrados
+- `psilua_appointments` - Agendamentos e sessões
  
 ## 🤖 Chat com IA
  
@@ -482,7 +484,7 @@ npm install
  
 <div align="center">
   <p>Desenvolvido com amor para facilitar o acesso à saúde mental</p>
-  <p><strong>Cuide+ v1.0.0 - Sistema de Agendamento Psicológico</strong></p>
+  <p><strong>PsiLua v1.0.0 - Sistema de Agendamento Psicológico</strong></p>
   <p>React 19 • Vite 7 • Tailwind CSS 4 • Hugging Face AI</p>
 </div>
  
