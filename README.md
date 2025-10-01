@@ -1,6 +1,6 @@
 # 🧠 PsiLua - Sistema de Agendamento Psicológico
  
-Sistema web moderno para gestão de consultas psicológicas, desenvolvido com React 19 + Vite, focado em atendimentos voluntários em universidades, ONGs e projetos sociais.
+Aplicação web atual para organização de atendimentos psicológicos, construída com React 19 + Vite, voltada especialmente para serviços voluntários em universidades, ONGs e iniciativas sociais.
  
 ![PsiLua Logo](public/logo.png)
  
@@ -9,31 +9,17 @@ Sistema web moderno para gestão de consultas psicológicas, desenvolvido com Re
 [![Vite](https://img.shields.io/badge/Vite-7.1.0-646cff.svg)](https://vitejs.dev/)
 [![Tailwind](https://img.shields.io/badge/Tailwind-4.1.11-38bdf8.svg)](https://tailwindcss.com/)
  
-## 📋 Índice
- 
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias](#tecnologias)
-- [Instalação](#instalação)
-- [Uso](#uso)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [API Mock](#api-mock)
-- [Chat com IA](#chat-com-ia)
-- [Componentes](#componentes)
-- [Rotas](#rotas)
-- [Design System](#design-system)
- 
 ## 🎯 Sobre o Projeto
  
-O **PsiLua** é uma plataforma web desenvolvida para facilitar o agendamento e gestão de consultas psicológicas em ambientes de atendimento voluntário. O sistema oferece interfaces diferenciadas para psicólogos e pacientes, com foco na experiência do usuário e eficiência operacional.
+O **PsiLua** é uma solução digital criada para otimizar o processo de marcação e controle de consultas psicológicas em contextos de atendimento comunitário. A plataforma disponibiliza painéis diferentes para psicólogos e pacientes, priorizando praticidade, usabilidade e agilidade no gerenciamento.
  
 ### Objetivos
  
-- Simplificar o processo de agendamento de consultas
-- Facilitar a gestão de pacientes para psicólogos
-- Fornecer relatórios e analytics para acompanhamento
-- Manter histórico completo de sessões
-- Garantir interface moderna e responsiva
+- Tornar mais simples a marcação de consultas
+- Auxiliar psicólogos na administração de seus pacientes
+- Disponibilizar relatórios e análises de acompanhamento
+- Preservar um histórico organizado de atendimentos
+- Oferecer uma interface intuitiva e adaptável a qualquer dispositivo
  
 ## ✨ Funcionalidades
  

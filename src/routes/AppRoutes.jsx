@@ -23,6 +23,7 @@ import { Solicitacoes } from '../pages/Solicitacoes';
 import { Pacientes } from '../pages/Pacientes';
 import { PacienteDetalhes } from '../pages/PacienteDetalhes';
 import { SessaoDetalhes } from '../pages/SessaoDetalhes';
+import { Agendamento } from '../pages/Agendamento';
  
  
 /* ==============================
@@ -128,6 +129,11 @@ export const AppRoutes = () => {
         <Route path="/solicitacoes" element={
           <ProtectedRoute>
             <Solicitacoes/> 
+          </ProtectedRoute>
+        } />
+        <Route path="/agendamento" element={
+          <ProtectedRoute>
+            <Agendamento/> 
           </ProtectedRoute>
         } />
         <Route path="/pacientes" element={

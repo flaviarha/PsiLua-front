@@ -137,7 +137,9 @@ export const ChatIA = () => {
 <div className="max-w-4xl mx-auto">
 <div className="mb-8">
 <h1 className="text-3xl font-bold text-dark mb-2">Chat com IA</h1>
-<p className="text-black/75">Assistente especializada em psicologia para apoiar sua prática clínica</p>
+<p className="text-lg text-black/75">
+  Assistente especializada em psicologia para apoiar sua prática clínica
+</p>
 </div>
  
       <Card className="h-[600px] flex flex-col">
