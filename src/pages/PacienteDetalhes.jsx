@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { data, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { mockApi } from "../services/mockApi";
+import { Input } from "../components/Input";
  
 import { Card } from "../components/Card";
 import { Button} from "../components/Button"
@@ -30,7 +31,7 @@ const PatientInfo = ({patient}) => {
             <div className="space-x-6">
                 <div className="flex items-center gap-4">
                     <div className="w-20 h-20 bg-gradient-to-br from-light to-accent rounded-full flex items-center justify-center">
-                        <Users className="w-10 h-10 text-white"/>
+                        <Users className="w-10 h-10 text-black"/>
                     </div>
                     <div>
                         <h2 className="text-2xl font-bold text-dark">{patient.name}</h2>
@@ -131,21 +132,18 @@ const Session = ({ data, onChange, onSubmit, onCancel, loading }) => {
     )
 }
 const Header = ({ onBack, title }) => (
-    <div className="flex items-center gap-4">
-    <Button
-   
-          variant="secondary"
-   
-          onClick={onBack}
-   
-          className="flex items-center gap-2 bg-white text-light hover:bg-gray-50 border border-gray-200"
-    >
-    <ArrowLeft size={20} />
-   
-          Voltar
-    </Button>
-    <h1 className="text-3xl font-bold text-white">{title}</h1>
-    </div>
+<div className="flex items-center gap-4">
+  <Button
+    variant="secondary"
+    onClick={onBack}
+    className="flex items-center gap-2 bg-black text-black hover:text-black focus:text-white active:text-black hover:bg-gray-50 border border-black-200"
+  >
+    <ArrowLeft size={20} className="text-black/80" />
+    Voltar
+  </Button>
+
+  <h1 className="text-3xl font-bold text-black">{title}</h1>
+</div>
    
     );
      
@@ -186,6 +184,63 @@ const Header = ({ onBack, title }) => (
     </Card>
    
     );
+    const SessionForm = ({ data, onChange, onSubmit, onCancel, loading }) => {
+      const timeSlots = ['08:00', '09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+      const durations = [30, 45, 50, 60];
+      const today = new Date().toISOString().split('T')[0];
+     
+      return (
+        <Card className="bg-blue-50">
+          <h4 className="font-semibold text-dark mb-4">Agendar Nova Sessão</h4>
+          <form onSubmit={onSubmit} className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
+              <Input
+                label="Data *"
+                type="date"
+                value={data.date}
+                onChange={(e) => onChange({ ...data, date: e.target.value })}
+                min={today}
+                required
+              />
+              <div>
+                <label className="block text-sm font-medium text-dark mb-2">Horário *</label>
+                <select
+                  value={data.time}
+                  onChange={(e) => onChange({ ...data, time: e.target.value })}
+                  className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-dark focus:outline-none focus:ring-2 focus:ring-light"
+                  required
+                >
+                  <option value="">Selecione o horário</option>
+                  {timeSlots.map(time => <option key={time} value={time}>{time}</option>)}
+                </select>
+              </div>
+            </div>
+            <Input
+              label="Descrição"
+              value={data.description}
+              onChange={(e) => onChange({ ...data, description: e.target.value })}
+              placeholder="Ex: Sessão de acompanhamento, Avaliação inicial..."
+            />
+            <div>
+              <label className="block text-sm font-medium text-dark mb-2">Duração (minutos)</label>
+              <select
+                value={data.duration}
+                onChange={(e) => onChange({ ...data, duration: parseInt(e.target.value) })}
+                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-dark focus:outline-none focus:ring-2 focus:ring-light"
+              >
+                {durations.map(duration => <option key={duration} value={duration}>{duration} minutos</option>)}
+              </select>
+            </div>
+            <div className="flex gap-4">
+              <Button type="button" variant="secondary" onClick={onCancel} className="flex-1">Cancelar</Button>
+              <Button type="submit" loading={loading} className="flex-1" disabled={!data.date || !data.time}>Agendar Sessão</Button>
+            </div>
+          </form>
+        </Card>
+      );
+    };
+     
+     
      
     const SessionList = ({ sessions, onStatusUpdate, updatingSessions, navigate }) => {
    
@@ -417,8 +472,12 @@ const Header = ({ onBack, title }) => (
       if (!patient) return null;
      
       return (
-    <div className="space-y-6">
-    <Header onBack={() => navigate('/pacientes')} title="Detalhes do Paciente" />
+    <div className="space-y-6 ">
+    <Header
+  onBack={() => navigate('/pacientes')}
+  title={<span className="header-title text-black">Detalhes do Paciente
+  </span>}
+/>
     <PatientInfo patient={patient} />
     <SessionsCard
    
