@@ -144,11 +144,14 @@ src/
 |   ├──Infoballon.jsx  #Balão informativo
 |   ├── Footer.jsx        # Container footer
 │   ├── Input.jsx       # Input com validação e show/hide password
+│   ├──KpiCard.jsx
 │   ├── LoadingSpinner.jsx # Spinner de carregamento
 │   ├── MarkdownRenderer.jsx # Renderizador de markdown para IA
 │   ├── Modal.jsx       # Modal responsivo com overlay
 │   ├── PublicNavbar.jsx # Navbar para páginas públicas
-│   └── Sidebar.jsx     # Sidebar adaptativa para usuários autenticados
+│   ├──Sidebar.jsx     # Sidebar adaptativa para usuários autenticados
+│   ├──StatsCard.jsx
+│   ├──UpcomingAppointmentItem.jsx
 ├── context/            # Contextos React
 │   └── AuthContext.jsx # Contexto de autenticação
 ├── pages/              # Páginas da aplicação
