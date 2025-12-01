@@ -16,10 +16,11 @@ import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import { NotFound } from '../pages/NotFound';
  
-/* 
+ 
 // Páginas protegidas (apenas para usuários autenticados)
 import { DashboardPsicologo } from '../pages/DashboardPsicologo';
 import { DashboardPaciente } from '../pages/DashboardPaciente';
+/*
 import {Agendamentos}  from '../pages/Agendamentos';
 import { ChatIA } from '../pages/ChatIA';
 import { Relatorios } from '../pages/relatorios';
@@ -118,7 +119,11 @@ export const AppRoutes = () => {
         {/* ==============================
            Rotas Protegidas
            ============================== */}
-        
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
  
         <Route path="*" element={<NotFound/>}/>
       </Routes>
