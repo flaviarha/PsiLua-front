@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {useAuth} from "../context/AuthContext";
-import { mockApi } from "../services/mockApi";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import {Card} from "../components/Card";
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast';
  
 export const Login = () =>{
    
@@ -19,11 +18,9 @@ export const Login = () =>{
         setLoading(true);
  
         try{
-            const {user, token} = await mockApi.login(formData.email, formData.password);
-            login(user, token)
+            await login (formData.email, formData.password);
             toast.success('Login realizado com sucesso!');
- 
-            navigate('/dashboard')
+             navigate('/dashboard')
         }catch (error) {
             toast.error(error.message)
         }finally{

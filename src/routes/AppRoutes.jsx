@@ -14,18 +14,21 @@ import { Home } from '../pages/Home';
 import { About } from '../pages/About';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
-import { ChatIA } from '../pages/ChatIA';
+import { NotFound } from '../pages/NotFound';
+ 
+/* 
 // Páginas protegidas (apenas para usuários autenticados)
 import { DashboardPsicologo } from '../pages/DashboardPsicologo';
 import { DashboardPaciente } from '../pages/DashboardPaciente';
-import { Relatorios } from '../pages/Relatórios';
+import {Agendamentos}  from '../pages/Agendamentos';
+import { ChatIA } from '../pages/ChatIA';
+import { Relatorios } from '../pages/relatorios';
 import { Solicitacoes } from '../pages/Solicitacoes';
 import { Pacientes } from '../pages/Pacientes';
-import { PacienteDetalhes } from '../pages/PacienteDetalhes';
+import { PacientesDetalhes } from '../pages/PacientesDetalhes';
 import { SessaoDetalhes } from '../pages/SessaoDetalhes';
-import { Agendamento } from '../pages/Agendamento';
- 
- 
+*/
+
 /* ==============================
    Componente de rota protegida
    ============================== */
@@ -84,7 +87,7 @@ export const AppRoutes = () => {
         {/* ==============================
            Rotas Públicas
            ============================== */}
-        <Route path="/" element={
+        <Route path="/home" element={
           <PublicRoute>
             <Home />
           </PublicRoute>
@@ -108,49 +111,16 @@ export const AppRoutes = () => {
           </PublicRoute>
         } />
        
+       
+        
+               
+       
         {/* ==============================
            Rotas Protegidas
            ============================== */}
-        <Route path="/dashboard" element={
-          <ProtectedRoute>
-            <Dashboard /> {/* Escolhe dashboard de psicólogo ou paciente */}
-          </ProtectedRoute>
-        } />
-        <Route path="/chat-ia" element={
-          <ProtectedRoute>
-            <ChatIA /> 
-          </ProtectedRoute>
-        } />
-        <Route path="/relatorios" element={
-          <ProtectedRoute>
-            <Relatorios/> 
-          </ProtectedRoute>
-        } />
-        <Route path="/solicitacoes" element={
-          <ProtectedRoute>
-            <Solicitacoes/> 
-          </ProtectedRoute>
-        } />
-        <Route path="/agendamento" element={
-          <ProtectedRoute>
-            <Agendamento/> 
-          </ProtectedRoute>
-        } />
-        <Route path="/pacientes" element={
-          <ProtectedRoute>
-            <Pacientes/> 
-          </ProtectedRoute>
-        } />
-         <Route path="/pacientes/:id" element={
-          <ProtectedRoute>
-            <PacienteDetalhes/> 
-          </ProtectedRoute>
-        } />
-        <Route path="/sessao/:sessionId" element={
-          <ProtectedRoute>
-            <SessaoDetalhes/> 
-          </ProtectedRoute>
-        } />
+        
+ 
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </Router>
   );
