@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import { mockApi } from "../services/mockApi";
+import { reportService } from "../services/apiService";
 import { Card } from "../components/Card";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
-// Importações de gráficos (Recharts)
+// Gráficos
 import {
   BarChart,
   Bar,
@@ -18,13 +18,12 @@ import {
   Cell,
 } from "recharts";
 
-// Importações de ícones (Lucide)
+// Ícones
 import {
   AlertTriangle,
   TrendingUp,
   Users,
   Calendar,
-  BarChart3, // ícone de gráfico, se precisar
 } from "lucide-react";
 
 export const Relatorios = () => {
@@ -33,9 +32,11 @@ export const Relatorios = () => {
   const [reportsData, setReportsData] = useState(null);
 
   useEffect(() => {
+    if (!user?.id) return; // Evita chamadas antes da autenticação
+
     const loadReportsData = async () => {
       try {
-        const data = await mockApi.getReportsData(user.id);
+        const data = await reportService.getPsychologistReport(user.id);
         setReportsData(data);
       } catch (error) {
         console.error("Erro ao carregar dados dos relatórios:", error);
@@ -45,31 +46,37 @@ export const Relatorios = () => {
     };
 
     loadReportsData();
-  }, [user.id]);
+  }, [user?.id]);
 
   if (loading) return <LoadingSpinner size="lg" />;
   if (!reportsData) return <div>Erro ao carregar dados</div>;
 
-  const { stats, frequencyData, statusData } = reportsData;
+  const {
+    stats = {},
+    frequencyData = [],
+    statusData = []
+  } = reportsData;
 
-  // cores lilás e variações
-  const COLORS = ["#9d7cc1", "#bca8db", "#7d5aa7"];
+  const COLORS = ["#9d7cc1", "#bca8db", "#7d5aa7", "#6a4c8a"];
 
   return (
     <div className="space-y-8">
+
       {/* Título */}
-      <div className="text-center">
-        <h1 className="text-2xl font-semibold text-gray-800">
-          Relatórios e Analytics
-        </h1>
+      <div className="text-center mb-6">
+        <h1 className="text-4xl font-bold text-dark">Relatórios e Analytics</h1>
+        <p className="text-dark/60 text-lg mt-1">
+          Estatísticas de atendimentos, pacientes e desempenho
+        </p>
       </div>
 
       {/* KPIs */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
         <Card className="text-center shadow-md rounded-xl p-6 bg-white">
           <Users className="w-8 h-8 text-[#9d7cc1] mx-auto mb-3" />
           <h3 className="text-3xl font-bold text-gray-900">
-            {stats.activePatients}
+            {stats.activePatients ?? 0}
           </h3>
           <p className="text-gray-600 text-sm">Pacientes ativos</p>
         </Card>
@@ -77,7 +84,7 @@ export const Relatorios = () => {
         <Card className="text-center shadow-md rounded-xl p-6 bg-white">
           <Calendar className="w-8 h-8 text-[#9d7cc1] mx-auto mb-3" />
           <h3 className="text-3xl font-bold text-gray-900">
-            {stats.totalSessions}
+            {stats.totalSessions ?? 0}
           </h3>
           <p className="text-gray-600 text-sm">Sessões hoje</p>
         </Card>
@@ -85,7 +92,7 @@ export const Relatorios = () => {
         <Card className="text-center shadow-md rounded-xl p-6 bg-white">
           <TrendingUp className="w-8 h-8 text-[#9d7cc1] mx-auto mb-3" />
           <h3 className="text-3xl font-bold text-gray-900">
-            {stats.attendanceRate}%
+            {stats.attendanceRate ?? 0}%
           </h3>
           <p className="text-gray-600 text-sm">Taxa de conclusão</p>
         </Card>
@@ -93,7 +100,7 @@ export const Relatorios = () => {
         <Card className="text-center shadow-md rounded-xl p-6 bg-white">
           <AlertTriangle className="w-8 h-8 text-[#9d7cc1] mx-auto mb-3" />
           <h3 className="text-3xl font-bold text-gray-900">
-            {stats.riskAlerts}
+            {stats.riskAlerts ?? 0}
           </h3>
           <p className="text-gray-600 text-sm">Alertas de risco</p>
         </Card>
@@ -101,6 +108,7 @@ export const Relatorios = () => {
 
       {/* Gráficos */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
         {/* Frequência de Sessões */}
         <Card className="p-6 shadow-md rounded-xl bg-white">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
@@ -141,6 +149,7 @@ export const Relatorios = () => {
             </PieChart>
           </ResponsiveContainer>
         </Card>
+
       </div>
     </div>
   );

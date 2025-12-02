@@ -20,6 +20,11 @@ import { NotFound } from '../pages/NotFound';
 // Páginas protegidas (apenas para usuários autenticados)
 import { DashboardPsicologo } from '../pages/DashboardPsicologo';
 import { DashboardPaciente } from '../pages/DashboardPaciente';
+import { Solicitacoes } from '../pages/Solicitacoes';
+import { Agendamento }  from '../pages/Agendamento';
+import { ChatIA } from '../pages/ChatIA';
+import { Pacientes } from '../pages/Pacientes';
+import { Relatorios } from '../pages/Relatórios';
 /*
 import {Agendamentos}  from '../pages/Agendamentos';
 import { ChatIA } from '../pages/ChatIA';
@@ -124,6 +129,34 @@ export const AppRoutes = () => {
             <Dashboard />
           </ProtectedRoute>
         } />
+        <Route path="/chat-ia" element={
+          <ProtectedRoute>
+            <ChatIA />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/agendamento" element={
+          <ProtectedRoute>
+            <Agendamento />
+          </ProtectedRoute>
+        } />
+        <Route path="/solicitacoes" element={
+          <ProtectedRoute>
+            <Solicitacoes />
+          </ProtectedRoute>
+        } />
+
+         <Route path="/pacientes" element={
+          <ProtectedRoute>
+          <Pacientes />
+          </ProtectedRoute>
+        } />
+        <Route path="/relatorios" element={
+          <ProtectedRoute>
+          <Relatorios />
+          </ProtectedRoute>
+        } />
+        
  
         <Route path="*" element={<NotFound/>}/>
       </Routes>
